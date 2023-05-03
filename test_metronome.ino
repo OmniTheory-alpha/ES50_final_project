@@ -5,7 +5,7 @@ const int rs = 10, en = 8, db4 = 5, db5 = 4, db6 = 3, db7 = 2;
 LiquidCrystal lcd(rs, en, db4, db5, db6, db7);
 
 const int buzz = 6; // pin for the buzzer
-const int bpm_button = 7; // pin for control button
+const int bpm_button = 9; // pin for control button
 
 int time_between_beats = 0; // the time between beats
 const int click_duration = 50; // the actual duration of the metronome click in milliseconds

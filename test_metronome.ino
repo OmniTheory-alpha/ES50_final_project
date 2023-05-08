@@ -20,6 +20,20 @@ bool bpm_pressed = false; // variable to keep track of if the bpm button has bee
 unsigned long start_time = 0; // time when button was pressed
 unsigned long end_time = 0; // time when button was released
 
+/*
+  The basic idea of this code is to loop through each of the digits in the bpm array and update them as the Control Button is pressed.
+  The code does not move onto the next digit until a long press has been performed.
+  Inputs -> Outputs:
+    1. Short press (< 1000 ms) -> display current digit + 1
+      (if the current digit = 9) -> displays 0
+    2. Long press (>= 1000 ms) -> move to the next digit
+      (if the current digit is the hundreds place) -> play the BPM loop
+  States:
+    1. Idle
+    2. Number displaying in digit place
+    3. Playing BPM loop
+*/
+
 void setup() {
   Serial.begin(9600);
 

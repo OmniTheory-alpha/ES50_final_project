@@ -48,6 +48,8 @@ void loop() {
         MIDI.sendNoteOn(60 + i + 12*pitch, volume, 1);
 
         number_of_notes_playing++;
+        
+        // for debugging purposes
         Serial.print("Number of notes playing: ");
         Serial.println(number_of_notes_playing);
 
@@ -55,18 +57,18 @@ void loop() {
         Serial.println(i);
 
         if (number_of_notes_playing > 1) {
-          Serial.println("ith note (> 1): " + notes[i]);
-          lcd_notes += "," + notes[i];
-          Serial.println("LCD Notes: " + lcd_notes);
+          Serial.println("ith note (> 1): " + notes[i]); // debugging
+          lcd_notes += "," + notes[i]; // adds the note to the LCD Notes string
+          Serial.println("LCD Notes: " + lcd_notes); // debugging
           lcd.clear();
-          lcd.print("Note: " + lcd_notes);
+          lcd.print("Note: " + lcd_notes); // prints out the current LCD Notes string to the LCD screen
         }
         else if (number_of_notes_playing == 1) {
-          Serial.println("ith note (== 1): " + notes[i]);
-          lcd_notes += notes[i];
-          Serial.println("LCD Notes: " + lcd_notes);
+          Serial.println("ith note (== 1): " + notes[i]); // debugging
+          lcd_notes += notes[i]; // 
+          Serial.println("LCD Notes: " + lcd_notes); // debugging
           lcd.clear();
-          lcd.print("Note: " + lcd_notes);
+          lcd.print("Note: " + lcd_notes); // prints out the current LCD Notes string to the LCD screen
         }
 
         /*
@@ -89,6 +91,8 @@ void loop() {
         String cut_note = notes[i]; // note that we're cutting
         char first_character = cut_note[0]; // first letter of the note we're cutting
         bool sharp = false; // the note we're looking at is a sharp, true or false?
+        
+        // these are the symbols we are looking for when parsing the LCD Notes string
         String sharp_symbol = "#";
         const char * comma = ",\0";
 
